@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojo.Spartan;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 
 public class PostRequestWithPOJO {
 
@@ -17,19 +17,19 @@ public class PostRequestWithPOJO {
         RestAssured.port = 8000;
         RestAssured.basePath = "/api";
     }
-    @DisplayName("something")
+
     @Test
     public void testPostBodyWithPojo(){
       Spartan sp1 = new Spartan("Irina Li", "Female", 1231231231);
       given()
               .log().all()
               .contentType(ContentType.JSON)
-              .b
+              .body(sp1)
               .when()
               .post("/spartans")
               .then()
               .log().all()
-              .statusCode(201);
+              ;
 
 
     }

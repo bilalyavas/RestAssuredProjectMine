@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -51,7 +51,7 @@ public class PostRequestTest {
         .body("data.name",is(randomName))
                 ;
     }
-    @DisplayName("Posting with external json jile")
+    @DisplayName("Posting with external json file")
     @Test
     public void testPostExternalFile(){
         File file1 = new File("spartan.json");
